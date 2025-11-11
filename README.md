@@ -1,5 +1,14 @@
-# R Script used in the R software (v. 4.1.2) in the process of species modeling
-R scripts used for analysis.
+# R scripts for ecological niche modelling of *Pterodon* species in the Cerrado
+
+This repository contains the R scripts used in the study:
+
+**Modeling the potential distribution of species of the genus *Pterodon* (Fabaceae) in the Cerrado in climate change scenarios**, submitted to *Biota Neotropica*.
+
+---
+## Description
+
+The scripts provided here reproduce the workflow used for ecological niche modelling (ENM) of *Pterodon* species under current and future climate scenarios.  
+All analyses were performed in **R version 4.1.2**, using the **ENMTML** package (Andrade et al., 2020).
 
 # Installing and running the ENMTML package
 install.packages (“ENMTML”)
@@ -45,9 +54,10 @@ raster::writeRaster(projection$`ssp585_2041_2060`,file.path(d0[4], names(project
 raster::writeRaster(projection$`ssp585_2061_2080`,file.path(d0[5], names(projection$`ssp585_2061_2080`)), bylayer=TRUE, format=“GTiff'”)                      
 raster::writeRaster(projection$`ssp585_2081_2100`,file.path(d0[6], names(projection$`ssp585_2081_2100`)), bylayer=TRUE, format=“GTiff'”)
 
-                  
+                
 # --- Run ENMTML ---
 ENMTML(pred_dir = d_preditores, proj_dir = d_fut, result_dir = NULL, occ_file = d_oc, sp = 'species', x = 'x', y = 'y', min_occ = 10, thin_occ = c(method='USER-DEFINED', distance='5'), eval_occ = NULL, colin_var = c(method='PCA'), imp_var = FALSE, sp_accessible_area = NULL, pseudoabs_method = c(method='GEO_ENV_KM_CONST', width='50'), pres_abs_ratio = 1, part=c(method= 'KFOLD', folds='5'), save_part = FALSE, save_final = TRUE, algorithm = c('BIO', 'DOM', 'MXS', 'SVM', 'RDF'), thr = c(type='MAX_TSS'), msdm = NULL, ensemble = c(method='PCA'), extrapolation = FALSE, cores = 1)
+
 
 
 
